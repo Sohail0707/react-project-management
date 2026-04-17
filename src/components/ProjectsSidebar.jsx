@@ -1,13 +1,13 @@
 import Button from "./Button";
 
-export default function ProjectsSidebar({ onCreateProject }) {
+export default function ProjectsSidebar({ onStartCreateProject }) {
   return (
     <aside className="my-8 w-1/3 px-8 py-16 bg-stone-900 text-stone-50 md:w-72 rounded-r-xl">
       <h2 className="mb-8 font-bold uppercase md:text-xl text-stone-200">
         Your Projects
       </h2>
       <div>
-        <Button onClick={onCreateProject}>+ Add Project</Button>
+        <Button onClick={onStartCreateProject}>+ Add Project</Button>
       </div>
       <ul></ul>
     </aside>

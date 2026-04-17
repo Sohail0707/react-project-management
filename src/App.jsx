@@ -10,11 +10,26 @@ function App() {
     projects: [],
   });
 
-  function handleCreateProject() {
+  function handleStartCreateProject() {
     setProjectState((prev) => {
       return {
         ...prev,
         selectedProjectId: null,
+      };
+    });
+  }
+
+  function handleCreateProject(projectData) {
+    setProjectState((prev) => {
+      const newProject = {
+        ...projectData,
+        id: Math.random(),
+      };
+
+      return {
+        ...prev,
+        selectedProjectId: undefined,
+        projects: [...prev.projects, newProject],
       };
     });
   }
@@ -24,12 +39,14 @@ function App() {
   if (projectState.selectedProjectId === null) {
     content = <NewProject onProjectCreated={handleCreateProject} />;
   } else if (projectState.selectedProjectId === undefined) {
-    content = <NoProjectSelected onCreateProject={handleCreateProject} />;
+    content = (
+      <NoProjectSelected onStartCreateProject={handleStartCreateProject} />
+    );
   }
 
   return (
     <main className="h-screen flex gap-8">
-      <ProjectsSidebar onCreateProject={handleCreateProject} />
+      <ProjectsSidebar onStartCreateProject={handleStartCreateProject} />
       {content}
     </main>
   );
