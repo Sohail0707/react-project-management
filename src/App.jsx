@@ -23,7 +23,7 @@ function App() {
 
       return {
         ...prev,
-        task: [newTask, ...prev.task],
+        tasks: [newTask, ...prev.tasks],
       };
     });
   }
